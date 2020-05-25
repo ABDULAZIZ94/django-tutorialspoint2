@@ -6,8 +6,8 @@ import datetime
 def hello(request):
    today = datetime.datetime.now().date()
    daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-   return redirect("https://www.djangoproject.com")
-	
+   return render(request, "hello.html", {"today" : today})
+
 def viewArticle(request, articleId):
    """ A view that display an article based on his ID"""
    text = "Displaying article Number : %s" %articleId
@@ -16,3 +16,6 @@ def viewArticle(request, articleId):
 def viewArticles(request, year, month):
    text = "Displaying articles of : %s/%s"%(year, month)
    return HttpResponse(text)
+
+def static(request):
+   return render(request, "static.html", {})
