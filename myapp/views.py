@@ -1,23 +1,43 @@
-from django.shortcuts import render
+from myapp.models import Dreamreal
 from django.http import HttpResponse
-from django.shortcuts import render
-from datetime import datetime
 
-def hello2(request):
-   text = """<h1>welcome to my app !</h1>"""
-   return HttpResponse(text)
-# Create your views here.
-
-def hello3(request):
-   return render(request, "hello.html", {})
-
-def hello4(request):
-   today = datetime.now().date()
-   return render(request, "hello.html", {"today" : today})
-
-def hello(request):
-   today = datetime.now().date()
+def crudops(request):
+   #Creating an entry
    
-   daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-   return render(request, "hello2.html", {"today" : today, "days_of_week" : daysOfWeek})
-
+   dreamreal = Dreamreal(
+      website = "www.polo.com", mail = "sorex@polo.com", 
+      name = "sorex", phonenumber = "002376970"
+   )
+   
+   dreamreal.save()
+   
+   #Read ALL entries
+   objects = Dreamreal.objects.all()
+   res ='Printing all Dreamreal entries in the DB : <br>'
+   
+   for elt in objects:
+      res += elt.name+"<br>"
+   
+   #Read a specific entry:
+   sorex = Dreamreal.objects.get(name = "sorex")
+   res += 'Printing One entry <br>'
+   res += sorex.name
+   
+   #Delete an entry
+   res += '<br> Deleting an entry <br>'
+   sorex.delete()
+   
+   #Update
+   dreamreal = Dreamreal(
+      website = "www.polo.com", mail = "sorex@polo.com", 
+      name = "sorex", phonenumber = "002376970"
+   )
+   
+   dreamreal.save()
+   res += 'Updating entry<br>'
+   
+   dreamreal = Dreamreal.objects.get(name = 'sorex')
+   dreamreal.name = 'thierry'
+   dreamreal.save()
+   
+   return HttpResponse(res)

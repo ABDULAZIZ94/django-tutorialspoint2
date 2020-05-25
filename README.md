@@ -18,6 +18,7 @@ python manage.py startapp myapp
 
 # migrate
 python manage.py migrate
+python manage.py makemigrations
 
 # create super user
 python manage.py createsuperuser
@@ -30,3 +31,7 @@ python manage.py createsuperuser
 
 # user aziz
 github
+
+# create model
+python manage.py syncdb # deprecated
+
