@@ -1,6 +1,7 @@
-<html>
-   <body>
-      
+{% extends "main_template.html" %}
+{% block title %}My Hello Page{% endblock %}
+{% block content %}
+
       Hello World!!!<p>Today is {{today}}</p>
       We are
       {% if today.day == 1 %}
@@ -19,7 +20,5 @@
          {{day}}
       </p>
 		
-      {% endfor %}
-      
-   </body>
-</html>
+{% endfor %}
+{% endblock %}
