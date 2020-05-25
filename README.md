@@ -19,6 +19,9 @@ python manage.py startapp myapp
 # migrate
 python manage.py migrate
 
+# create super user
+python manage.py createsuperuser
+
 # set python interpreter
 CocCommand python.setInterpreter
 
@@ -26,4 +29,4 @@ CocCommand python.setInterpreter
 python manage.py createsuperuser
 
 # user aziz
-
+github

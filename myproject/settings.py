@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -57,7 +57,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
-        'APP_DIRS': True,
+        'APP_DIRS': True, #os.path.join(BASE_DIR, "templates")
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
