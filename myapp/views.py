@@ -11,7 +11,13 @@ def hello2(request):
 def hello3(request):
    return render(request, "hello.html", {})
 
-def hello(request):
+def hello4(request):
    today = datetime.now().date()
    return render(request, "hello.html", {"today" : today})
+
+def hello(request):
+   today = datetime.now().date()
+   
+   daysOfWeek = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+   return render(request, "hello2.html", {"today" : today, "days_of_week" : daysOfWeek})
 
