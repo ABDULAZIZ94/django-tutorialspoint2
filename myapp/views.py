@@ -22,15 +22,21 @@ def static(request):
    return render(request, "static.html", {})
 
 def login(request):
-   username = "not logged in"
+   username = 'not logged in'
    
-   if request.method == "POST":
-      #Get the posted form
+   if request.method == 'POST':
       MyLoginForm = LoginForm(request.POST)
       
       if MyLoginForm.is_valid():
          username = MyLoginForm.cleaned_data['username']
-   else:
-      MyLoginForm = LoginForm()
-		
+         request.session['username'] = username
+      else:
+         MyLoginForm = LoginForm()
    return render(request, 'loggedin.html', {"username" : username})
+
+def formView(request):
+   if request.session.has_key('username'):
+      username = request.session['username']
+      return render(request, 'loggedin.html', {"username" : username})
+   else:
+      return render(request, 'login.html', {})
